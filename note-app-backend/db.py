@@ -1,4 +1,5 @@
 import json
+import threading
 
 global database
 database = {}
@@ -12,6 +13,10 @@ def openJsonFile():
 
 def changeData(key,value):
     database[key] = value
+    saveJsonFile()
+
+def deleteData(key):
+    del database[key]
 
 def getData(key) -> any:
     return database[key]
